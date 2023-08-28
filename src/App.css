@@ -1,38 +1,186 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Container styles */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #f0f8ff; /* Light blue background color */
+}
+
+/* Increase the width of image cards */
+.image-card {
+  transition: transform 0.3s;
+  position: relative;
+  overflow: hidden;
+  width: 450px; /* Adjust the width as needed */
+  height: 500px; /* Adjust the height as needed */
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+}
+
+.image-details {
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
+  position: absolute;
+  top: 0;
+  right: -50%; /* Initially outside the card */
+  width: 70%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s, right 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.image-card:hover .image-details {
+  opacity: 1;
+  right: 0; /* Slide in on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* SearchBar styles */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 300px; /* Adjust the width as needed */
+  margin-right: 1rem; /* Add space between input and button */
+}
+
+.search-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* CSS for the grid buttons */
+.grid-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.grid-buttons button {
+  margin: 0 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.grid-buttons-container {
+  height: 150px; /* Adjust the height as needed */
+  overflow-y: auto;
+  border: 1px solid #ccc; /* Optional border for a visual separation */
+}
+
+/* CSS for the ImageGrid */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Adjust column width as needed */
+  gap: 20px; /* Gap between images */
+}
+
+/* Image card styles */
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+}
+
+.image-details {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.image-details a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* CSS for the separator paragraph */
+.separator-paragraph {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 14px;
+  color: #080202;
+}
+
+.title {
+  font-size: 2.5rem ; /* Adjust the font size as needed */
+  font-weight: bold; 
+}
+
+/* Add styles for the dropdown */
+.search-history-dropdown {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.search-history-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-history-dropdown li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-history-dropdown li:hover {
+  background-color: #f0f0f0;
 }
