@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
-import './SearchBar.css';
+import "../components/SearchBar.css"
+import React, { useState, useEffect } from 'react';
 
-function SearchBar({ setSearchQuery, fetchImages, initialSearchQuery, searchHistory }) {
+function SearchBar({ setSearchQuery, fetchImages, initialSearchQuery }) {
   const [query, setQuery] = useState(initialSearchQuery || '');
+  const [searchHistory, setSearchHistory] = useState([]);
+
+  useEffect(() => {
+    const storedSearchHistory = localStorage.getItem('searchHistory');
+    if (storedSearchHistory) {
+      setSearchHistory(JSON.parse(storedSearchHistory));
+    }
+  }, []);
 
   const handleQueryChange = (newQuery) => {
     setQuery(newQuery);
@@ -11,19 +19,24 @@ function SearchBar({ setSearchQuery, fetchImages, initialSearchQuery, searchHist
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       fetchImages(query);
+      updateSearchHistory(query);
     }
   };
 
   const handleSuggestionClick = (suggestion) => {
     setQuery(suggestion);
     fetchImages(suggestion);
+    updateSearchHistory(suggestion);
   };
 
-  // Get the last 3 items from the searchHistory array
-  const lastThreeSearches = searchHistory.slice(-3);
+  const updateSearchHistory = (newQuery) => {
+    const newHistory = [newQuery, ...searchHistory.slice(0, 2)];
+    setSearchHistory(newHistory);
+    localStorage.setItem('searchHistory', JSON.stringify(newHistory));
+  };
 
   return (
-    <div className="search-bar-container">
+    <div className="search-bar-container relative"> {/* Add 'relative' class */}
       <div className="search-input-container">
         <input
           type="text"
@@ -37,18 +50,19 @@ function SearchBar({ setSearchQuery, fetchImages, initialSearchQuery, searchHist
           Search
         </button>
       </div>
-      <div className="search-history-container">
-        {lastThreeSearches.length > 0 && (
-          <div className="search-history">
-            <p>Search History:</p>
-            <ul>
-              {lastThreeSearches.map((item, index) => (
-                <li key={index} onClick={() => handleSuggestionClick(item)}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="search-history-dropdown absolute w-64 mt-1"> {/* Add 'absolute' and adjust width */}
+        {searchHistory.length > 0 && (
+          <ul className="bg-white border rounded shadow">
+            {searchHistory.map((item, index) => (
+              <li
+                key={index}
+                className="hover:bg-gray-200 cursor-pointer transition duration-200 py-2 px-4"
+                onClick={() => handleSuggestionClick(item)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </div>

@@ -63,7 +63,7 @@
   margin-right: 1rem; /* Add space between input and button */
 }
 
-.search-button {
+/* .search-button {
   background-color: #3498db;
   color: white;
   border: none;
@@ -71,18 +71,19 @@
   border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-}
+} */
 
-.search-button:hover {
+/* .search-button:hover {
   background-color: #2980b9;
   transform: scale(1.05);
-}
+} */
 
 /* CSS for the grid buttons */
 .grid-buttons {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  padding: 0;
 }
 
 .grid-buttons button {
@@ -148,7 +149,7 @@
 /* CSS for the separator paragraph */
 .separator-paragraph {
   text-align: center;
-  margin: 1rem 0;
+  margin: 3rem ;
   font-size: 14px;
   color: #080202;
 }
@@ -184,3 +185,158 @@
 .search-history-dropdown li:hover {
   background-color: #f0f0f0;
 }
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Search button styles */
+.search-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* CSS for the grid buttons */
+.grid-buttons {
+  display: flex;
+  margin-left: 1rem; /* Add space between search button and grid buttons */
+}
+
+.grid-buttons button {
+  margin: 0 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+/* Add this CSS to your existing App.css file */
+
+/* CSS for the ImageGrid */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Adjust column width as needed */
+  gap: 20px; /* Gap between images */
+}
+
+/* Adjust spacing and alignment for 5 columns */
+@media (min-width: 1024px) {
+  .image-grid {
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center; /* Horizontally center images */
+    align-items: start; /* Align images to the top */
+  }
+}
+
+/* Image card styles */
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: 100%; /* Ensure images take full width of column */
+  height: auto; /* Allow images to scale proportionally */
+}
+/* Container styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem; /* Adjust padding for smaller devices */
+  background-color: #f0f8ff; /* Light blue background color */
+}
+
+/* Increase the width of image cards */
+.image-card {
+  /* Existing styles... */
+  width: 100%; /* Ensure images take full width of column */
+  height: auto; /* Allow images to scale proportionally */
+  margin-bottom: 0.5rem; /* Adjust margin for spacing */
+}
+
+.image-card:hover {
+  /* Existing styles... */
+  transform: scale(1.03); /* Slightly reduce hover scaling for smaller cards */
+}
+
+/* SearchBar styles */
+.search-bar-container {
+  /* Existing styles... */
+  flex-direction: column; /* Stack search bar on top of other elements */
+  align-items: flex-start; /* Align items to the left */
+  margin-bottom: 1rem; /* Adjust margin for spacing */
+  
+}
+
+.search-input {
+  /* Existing styles... */
+  width: 100%; /* Take full width of the container */
+  margin-right: 0; /* Remove margin to maximize width */
+}
+
+/* CSS for the grid buttons */
+.grid-buttons {
+  /* Existing styles... */
+  justify-content: flex-start; /* Align buttons to the left */
+  margin: 1rem 0; /* Adjust margin for spacing */
+}
+
+.grid-buttons button {
+  /* Existing styles... */
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem; /* Adjust margin for spacing */
+}
+
+/* CSS for the ImageGrid */
+.image-grid {
+  /* Existing styles... */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px; /* Reduce gap between images */
+}
+
+/* Adjust spacing and alignment for 5 columns */
+@media (min-width: 640px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller devices */
+    justify-items: center; /* Horizontally center images */
+  }
+}
+
+/* Adjust spacing and alignment for 3 columns */
+@media (min-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on medium devices */
+  }
+}
+
+/* Image card styles */
+.image-card {
+  /* Existing styles... */
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
